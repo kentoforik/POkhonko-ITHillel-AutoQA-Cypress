@@ -1,0 +1,22 @@
+{
+  "name": "pokhonko-ithillel-autoqa-cypress",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kentoforik/POkhonko-ITHillel-AutoQA-Cypress.git"
+  },
+  "author": "Pavlo Okhonko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kentoforik/POkhonko-ITHillel-AutoQA-Cypress/issues"
+  },
+  "homepage": "https://github.com/kentoforik/POkhonko-ITHillel-AutoQA-Cypress#readme",
+  "description": "",
+  "devDependencies": {
+    "cypress": "^13.16.1"
+  }
+}
