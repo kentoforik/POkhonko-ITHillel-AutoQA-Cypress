@@ -2,11 +2,12 @@ import { testLogins, testPassword } from './test_data/login-data'
 import { loginPageSelectors, inventoryPageSelectors } from './test_data/selectors'
 import inventoryPageUrl from './test_data/pagesPath'
 import { inventoryPage, loginPageErrors } from './test_data/pageItems'
+import { L17_URL } from '../base_urls'
 
-describe('User login', () => {
+describe('Lesson17: User login', () => {
 
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit(L17_URL)
   })
 
   it('should successfully log in with correct credentials', () => {
@@ -24,6 +25,6 @@ describe('User login', () => {
     cy.get(loginPageSelectors.login).type(testLogins.lockedOutUser)
     cy.get(loginPageSelectors.password).type(testPassword)
     cy.get(loginPageSelectors.loginButton).click()
-    cy.get(loginPageSelectors.errorMessage).should('have.text',loginPageErrors.lockedUser)
+    cy.get(loginPageSelectors.errorMessage).should('have.text', loginPageErrors.lockedUser)
   })
 })

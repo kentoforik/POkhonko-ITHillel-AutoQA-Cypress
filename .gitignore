@@ -1,5 +1,5 @@
 node_modules
 .DS_Store
-practice*
+user_login_credentials.js
 cypress/videos/
 cypress/screenshots/
