@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "npx cypress run",
+    "test-ui": "npx cypress open"
   },
   "repository": {
     "type": "git",
