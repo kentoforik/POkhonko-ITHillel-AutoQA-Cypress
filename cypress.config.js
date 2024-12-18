@@ -10,7 +10,7 @@ module.exports = defineConfig({
       openMode: 1,
     },
     
-    excludeSpecPattern: "./cypress/e2e/17_cypress_intro/**/*.js" //change this for each HW
+    specPattern: "./cypress/e2e/19*/**/*cy.js" //change this for each HW
   },
 
 });
