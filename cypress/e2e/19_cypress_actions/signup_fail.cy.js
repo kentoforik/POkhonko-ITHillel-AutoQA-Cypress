@@ -20,8 +20,8 @@ describe('User Sign up', () => {
     })
   })
 
-  describe('is forbidden and shows appropriate errors', () => {
-    it('without (with empty) Name', () => {
+  describe('is forbidden and shows appropriate errors when NAME', () => {
+    it('is empty', () => {
       UserSignUpFiller(inValidUser.withoutName, signUpModalSelectors)
       cy.get(signUpModalSelectors.nameInput)
         .type('1').clear().blur()
@@ -34,7 +34,7 @@ describe('User Sign up', () => {
       cy.get(signUpModalSelectors.registerBtn).should('have.attr', 'disabled')
     })
 
-    it('with Name of invalid length and chars (2 errors simultaneously)', () => {
+    it('of invalid length and chars (2 errors simultaneously)', () => {
       UserSignUpFiller(inValidUser.withInvalidLengthAndCharsName, signUpModalSelectors)
       cy.get(signUpModalSelectors.nameInput)
         .should('have.css', 'border-color', invalidInputProps.borderColor)
@@ -49,7 +49,7 @@ describe('User Sign up', () => {
       cy.get(signUpModalSelectors.registerBtn).should('have.attr', 'disabled')
     })
 
-    it('with the name of 1 char', () => {
+    it('of 1 char', () => {
       UserSignUpFiller(inValidUser.withShortName, signUpModalSelectors)
       cy.get(signUpModalSelectors.nameInput)
         .should('have.css', 'border-color', invalidInputProps.borderColor)
@@ -61,7 +61,7 @@ describe('User Sign up', () => {
       cy.get(signUpModalSelectors.registerBtn).should('have.attr', 'disabled')
     })
 
-    it('with the name of 21 chars', () => {
+    it('of 21 chars', () => {
       UserSignUpFiller(inValidUser.withLongName, signUpModalSelectors)
       cy.get(signUpModalSelectors.nameInput)
         .should('have.css', 'border-color', invalidInputProps.borderColor)
@@ -73,7 +73,7 @@ describe('User Sign up', () => {
       cy.get(signUpModalSelectors.registerBtn).should('have.attr', 'disabled')
     })
 
-    it('with NON english name of valid length', () => {
+    it('of valid length but contains NON english chars', () => {
       UserSignUpFiller(inValidUser.withNonEnglishCharsName, signUpModalSelectors)
       cy.get(signUpModalSelectors.nameInput)
         .should('have.css', 'border-color', invalidInputProps.borderColor)
@@ -85,7 +85,7 @@ describe('User Sign up', () => {
       cy.get(signUpModalSelectors.registerBtn).should('have.attr', 'disabled')
     })
 
-    it('with the name of valid length, containing special characters and numbers', () => {
+    it('of valid length, but containing special characters and numbers', () => {
       UserSignUpFiller(inValidUser.withSpecialCharsName, signUpModalSelectors)
       cy.get(signUpModalSelectors.nameInput)
         .should('have.css', 'border-color', invalidInputProps.borderColor)
@@ -98,8 +98,8 @@ describe('User Sign up', () => {
     })
   })
 
-  describe('is forbidden and shows appropriate errors', () => {
-    it('without (with empty) Last name', () => {
+  describe('is forbidden and shows appropriate errors when LAST NAME', () => {
+    it('is empty', () => {
       UserSignUpFiller(inValidUser.withoutLastName, signUpModalSelectors)
       cy.get(signUpModalSelectors.lastNameInput)
         .type('1').clear().blur()
@@ -112,7 +112,7 @@ describe('User Sign up', () => {
       cy.get(signUpModalSelectors.registerBtn).should('have.attr', 'disabled')
     })
 
-    it('with Last name of invalid length and chars (2 errors simultaneously)', () => {
+    it('of invalid length and chars (2 errors simultaneously)', () => {
       UserSignUpFiller(inValidUser.withInvalidLengthAndCharsLastName, signUpModalSelectors)
       cy.get(signUpModalSelectors.lastNameInput)
         .should('have.css', 'border-color', invalidInputProps.borderColor)
@@ -127,7 +127,7 @@ describe('User Sign up', () => {
       cy.get(signUpModalSelectors.registerBtn).should('have.attr', 'disabled')
     })
 
-    it('with the Last name of 1 char', () => {
+    it('of 1 char', () => {
       UserSignUpFiller(inValidUser.withShortLastName, signUpModalSelectors)
       cy.get(signUpModalSelectors.lastNameInput)
         .should('have.css', 'border-color', invalidInputProps.borderColor)
@@ -139,7 +139,7 @@ describe('User Sign up', () => {
       cy.get(signUpModalSelectors.registerBtn).should('have.attr', 'disabled')
     })
 
-    it('with the Last name of 21 chars', () => {
+    it('of 21 chars', () => {
       UserSignUpFiller(inValidUser.withLongLastName, signUpModalSelectors)
       cy.get(signUpModalSelectors.lastNameInput)
         .should('have.css', 'border-color', invalidInputProps.borderColor)
@@ -151,7 +151,7 @@ describe('User Sign up', () => {
       cy.get(signUpModalSelectors.registerBtn).should('have.attr', 'disabled')
     })
 
-    it('with NON english Last name of valid length', () => {
+    it('of valid length but contains NON english chars', () => {
       UserSignUpFiller(inValidUser.withNonEnglishCharsLastName, signUpModalSelectors)
       cy.get(signUpModalSelectors.lastNameInput)
         .should('have.css', 'border-color', invalidInputProps.borderColor)
@@ -163,7 +163,7 @@ describe('User Sign up', () => {
       cy.get(signUpModalSelectors.registerBtn).should('have.attr', 'disabled')
     })
 
-    it('with the Last name of valid length, containing special characters and numbers', () => {
+    it('of valid length, containing special characters and numbers', () => {
       UserSignUpFiller(inValidUser.withSpecialCharsLastName, signUpModalSelectors)
       cy.get(signUpModalSelectors.lastNameInput)
         .should('have.css', 'border-color', invalidInputProps.borderColor)
@@ -176,8 +176,8 @@ describe('User Sign up', () => {
     })
   })
 
-  describe('is forbidden and shows appropriate errors', () => {
-    it('without (with empty) Email', () => {
+  describe('is forbidden and shows appropriate errors when Email', () => {
+    it('is empty', () => {
       UserSignUpFiller(inValidUser.withoutEmail, signUpModalSelectors)
       cy.get(signUpModalSelectors.emailInput)
         .type('1').clear().blur()
@@ -190,7 +190,7 @@ describe('User Sign up', () => {
       cy.get(signUpModalSelectors.registerBtn).should('have.attr', 'disabled')
     })
 
-    it('with Email, missing \@ char within', () => {
+    it('missing \@ char within', () => {
       UserSignUpFiller(inValidUser.withIncorrectEmail, signUpModalSelectors)
       cy.get(signUpModalSelectors.emailInput)
         .should('have.css', 'border-color', invalidInputProps.borderColor)
@@ -204,8 +204,8 @@ describe('User Sign up', () => {
 
   })
 
-  describe('is forbidden and shows appropriate errors', () => {
-    it('without (with empty) Password', () => {
+  describe('is forbidden and shows appropriate errors when PASSWORD', () => {
+    it('is empty', () => {
       UserSignUpFiller(inValidUser.withoutPassword, signUpModalSelectors)
       cy.get(signUpModalSelectors.passwordInput)
         .type('1').clear().blur()
@@ -218,7 +218,7 @@ describe('User Sign up', () => {
       cy.get(signUpModalSelectors.registerBtn).should('have.attr', 'disabled')
     })
 
-    it('with Password of 7 chars', () => {
+    it('of 7 chars', () => {
       UserSignUpFiller(inValidUser.withShortPassword, signUpModalSelectors)
       cy.get(signUpModalSelectors.passwordInput)
         .should('have.css', 'border-color', invalidInputProps.borderColor)
@@ -230,7 +230,7 @@ describe('User Sign up', () => {
       cy.get(signUpModalSelectors.registerBtn).should('have.attr', 'disabled')
     })
 
-    it('with Password of 16 chars', () => {
+    it('of 16 chars', () => {
       UserSignUpFiller(inValidUser.withLongPassword, signUpModalSelectors)
       cy.get(signUpModalSelectors.passwordInput)
         .should('have.css', 'border-color', invalidInputProps.borderColor)
@@ -242,7 +242,7 @@ describe('User Sign up', () => {
       cy.get(signUpModalSelectors.registerBtn).should('have.attr', 'disabled')
     })
 
-    it('with Password of valid length and NO integer', () => {
+    it('of valid length but has NO integer', () => {
       UserSignUpFiller(inValidUser.withNoIntegerInPassword, signUpModalSelectors)
       cy.get(signUpModalSelectors.passwordInput)
         .should('have.css', 'border-color', invalidInputProps.borderColor)
@@ -254,7 +254,7 @@ describe('User Sign up', () => {
       cy.get(signUpModalSelectors.registerBtn).should('have.attr', 'disabled')
     })
 
-    it('with Password of valid length and NO capital letter', () => {
+    it('of valid length but has NO capital letter', () => {
       UserSignUpFiller(inValidUser.withNoCapitalInPassword, signUpModalSelectors)
       cy.get(signUpModalSelectors.passwordInput)
         .should('have.css', 'border-color', invalidInputProps.borderColor)
@@ -266,7 +266,7 @@ describe('User Sign up', () => {
       cy.get(signUpModalSelectors.registerBtn).should('have.attr', 'disabled')
     })
 
-    it('with Password of valid length and NO small letter', () => {
+    it('of valid length but has NO small letter', () => {
       UserSignUpFiller(inValidUser.withNoSmallInPassword, signUpModalSelectors)
       cy.get(signUpModalSelectors.passwordInput)
         .should('have.css', 'border-color', invalidInputProps.borderColor)
@@ -280,8 +280,8 @@ describe('User Sign up', () => {
 
   })
 
-  describe('is forbidden and shows appropriate errors', () => {
-    it('without (with empty) re-entered Password', () => {
+  describe('is forbidden and shows appropriate errors when RE-ENTERED PASSWORD', () => {
+    it('is empty', () => {
       UserSignUpFiller(inValidUser.withoutReEnteredPassword, signUpModalSelectors)
 
       cy.get(signUpModalSelectors.passwordReEnterInput).focus().blur()
@@ -297,7 +297,7 @@ describe('User Sign up', () => {
 
     })
 
-    it('with re-entered Password not matching main Password', () => {
+    it('not matching main Password', () => {
       UserSignUpFiller(inValidUser.withNotMatchingReEnteredPassword, signUpModalSelectors)
       cy.get(signUpModalSelectors.passwordReEnterInput)
         .blur()
