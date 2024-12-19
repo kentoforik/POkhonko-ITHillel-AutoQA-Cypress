@@ -1,6 +1,6 @@
 const { L18_URL: urls } = require('../urls')
 const { first_login_data } = require('./test_data/user_login_credentials')
-const { authHandler: auth } = require('./helpers/auth_helper')
+const { authHandler: auth } = require('../helpers/auth_helper')
 const {
   headerSelectors: header,
   footerSelectors: footer,

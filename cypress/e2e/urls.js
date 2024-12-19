@@ -11,3 +11,8 @@ export const L18_URL = {
   ITHillelHome: 'https://ithillel.ua',
   ITHillelSupport: 'mailto:developer@ithillel.ua'
 }
+
+export const L19_URL = {
+  homePage: 'https://qauto.forstudy.space/',
+  garagePage:'https://qauto.forstudy.space/panel/garage'
+}
