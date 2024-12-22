@@ -91,6 +91,12 @@ describe('Expenses page', () => {
     HomePage.UserSignIn(userLoginData, homePageSelectors)
   })
 
+  after(() => {
+    //cleaning up the garage after each test
+    leftMenu.garage.click()
+    GaragePage.removeAllCars()
+  })
+
   it('opens empty when NO expanses added', () => {
     leftMenu.expenses.click()
     expensesPage.header.should('have.text', expensesConstants.header)
@@ -154,7 +160,7 @@ describe('Expenses page', () => {
     addExpenseModal.cancel()
   })
 
-  it.only('forbids adding expenses with invalid required fields', () => {
+  it('forbids adding expenses with invalid required fields', () => {
     AddCarModal.open()
     AddCarModal.selectBrand(garagePageConstants.carBrands[3])
     AddCarModal.selectModel(garagePageConstants.carModels.Porsche[2])
