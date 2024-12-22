@@ -3,3 +3,5 @@ node_modules
 user_login_credentials.js
 cypress/videos/
 cypress/screenshots/
+mochawesome-report/
+downloads/
