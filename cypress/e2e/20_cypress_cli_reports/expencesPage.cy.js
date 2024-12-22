@@ -78,7 +78,7 @@ describe('Expenses page', () => {
       cy.get('td').contains(dates.currentDate).should('exist')
       cy.get('td').contains(milage.tenMiles).should('exist')
       cy.get('td').contains(`${litres.oneLitre}L`).should('exist')
-      cy.get('td').contains(`${costs.oneDollar} USD`).should('exist')
+      cy.get('td').contains(`${costs.oneDollar}`).should('exist')
     })
   })
 

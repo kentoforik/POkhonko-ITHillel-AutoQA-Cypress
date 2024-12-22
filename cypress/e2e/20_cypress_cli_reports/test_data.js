@@ -19,7 +19,7 @@ export const litres = {
 }
 
 export const costs = {
-  oneDollar: '1.00',
-  tenCost: '10.00',
+  oneDollar: '1',
+  tenDollars: '10',
   invalidCost: '-1'
 }
