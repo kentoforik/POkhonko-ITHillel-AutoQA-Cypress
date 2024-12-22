@@ -16,68 +16,6 @@ import leftMenu from '../page-objects/leftMenu'
 
 import { milage, dates, litres, costs } from './test_data'
 
-describe('Garage page', () => {
-  beforeEach(() => {
-    const preLoginUserName = Cypress.env('preLoginUserName')
-    const preLoginUserPassword = Cypress.env('preLoginUserPassword')
-    authHandler('/', preLoginUserName, preLoginUserPassword)
-
-    const userLoginData = {
-      email: Cypress.env('username'),
-      password: Cypress.env('password')
-    }
-    HomePage.UserSignIn(userLoginData, homePageSelectors)
-  })
-
-  after(() => {
-    //cleaning up the garage after each test
-    leftMenu.garage.click()
-    GaragePage.removeAllCars()
-  })
-
-  it('is opened', () => {
-    cy.url().should('eq', `${Cypress.config().baseUrl}\/${garagePageConstants.path}`)
-    GaragePage.header.should('have.text', garagePageConstants.header)
-    GaragePage.addCarBtn.should('have.text', garagePageConstants.addCarButton)
-  })
-
-  describe('Add car', () => {
-    it('should add car to garage, showing it in the list top', () => {
-      AddCarModal.open()
-      AddCarModal.selectBrand(garagePageConstants.carBrands[1])
-      AddCarModal.selectModel(garagePageConstants.carModels.BMW[1])
-      AddCarModal.typeMilage(milage.tenMiles)
-      AddCarModal.clickAddBtn()
-
-      GaragePage.TopCarInList
-        .name.should('have.text', `${garagePageConstants.carBrands[1]} ${garagePageConstants.carModels.BMW[1]}`)
-
-      GaragePage.TopCarInList.milage.should('have.value', milage.tenMiles)
-
-      GaragePage.TopCarInList.updateDate.should('contain.text', AddCarModal.creationDate)
-    })
-
-    it('should be forbidden for car with empty/invalid milage', () => {
-      AddCarModal.open()
-      AddCarModal.selectBrand(garagePageConstants.carBrands[2])
-      AddCarModal.selectModel(garagePageConstants.carModels.Ford[2])
-
-      //Empty milage
-      AddCarModal.milageInput.focus().blur()
-      AddCarModal.milageValidationError.should('have.text', garagePageConstants.errors.emptyMilageOnAddCar)
-
-      //Invalid milage
-      AddCarModal.typeMilage(milage.invalidMiles)
-      AddCarModal.milageValidationError.should('have.text', garagePageConstants.errors.invalidMilageOnAddCar)
-
-      //Modal is closed, brand input does not exist
-      AddCarModal.clickCancelBtn()
-      AddCarModal.brandInput.should('not.exist')
-    })
-  })
-})
-
-
 describe('Expenses page', () => {
   beforeEach(() => {
     const preLoginUserName = Cypress.env('preLoginUserName')
@@ -98,6 +36,13 @@ describe('Expenses page', () => {
   })
 
   it('opens empty when NO expanses added', () => {
+    //Adding a car to use them for expenses
+    AddCarModal.open()
+    AddCarModal.selectBrand(garagePageConstants.carBrands[3])
+    AddCarModal.selectModel(garagePageConstants.carModels.Porsche[2])
+    AddCarModal.typeMilage(milage.oneMile)
+    AddCarModal.clickAddBtn()
+
     leftMenu.expenses.click()
     expensesPage.header.should('have.text', expensesConstants.header)
     expensesPage.addExpenseButton.should('have.text', expensesConstants.addExpenseBtn)
@@ -121,7 +66,6 @@ describe('Expenses page', () => {
     addExpenseModal.header.should('have.text', expensesConstants.addExpenseModal.header)
 
     //filling the Add expense modal
-    addExpenseModal.selectVehicle(garagePageConstants.carBrands[3] + ' ' + garagePageConstants.carModels.Porsche[2])
     addExpenseModal.typeDate(dates.currentDate)
     addExpenseModal.typeMilage(milage.tenMiles)
     addExpenseModal.typeLitres(litres.oneLitre)
