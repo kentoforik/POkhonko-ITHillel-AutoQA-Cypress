@@ -14,7 +14,7 @@ class GaragePage {
     this.addCarBtn.click()
   }
 
-  get TopCarInList() {
+  get topCarInList() {
     const topItemContainer = cy.get(garagePageSelectors.carsListItem.container).first()
     return {
       get name() {

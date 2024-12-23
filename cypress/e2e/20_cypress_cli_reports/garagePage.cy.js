@@ -8,7 +8,7 @@ import GaragePage from '../page-objects/garage_page/garagePage'
 import AddCarModal from '../page-objects/garage_page/addCarModal'
 import { garagePageConstants } from '../constants/garagePage'
 
-import leftMenu from '../page-objects/leftMenu'
+import LeftMenu from '../page-objects/leftMenu'
 
 import { milage } from './test_data'
 
@@ -27,7 +27,7 @@ describe('Garage page', () => {
 
   after(() => {
     //cleaning up the garage after each test
-    leftMenu.garage.click()
+    LeftMenu.garage.click()
     GaragePage.removeAllCars()
   })
 
@@ -45,12 +45,12 @@ describe('Garage page', () => {
       AddCarModal.typeMilage(milage.tenMiles)
       AddCarModal.clickAddBtn()
 
-      GaragePage.TopCarInList
+      GaragePage.topCarInList
         .name.should('have.text', `${garagePageConstants.carBrands[1]} ${garagePageConstants.carModels.BMW[1]}`)
 
-      GaragePage.TopCarInList.milage.should('have.value', milage.tenMiles)
+      GaragePage.topCarInList.milage.should('have.value', milage.tenMiles)
 
-      GaragePage.TopCarInList.updateDate.should('contain.text', AddCarModal.creationDate)
+      GaragePage.topCarInList.updateDate.should('contain.text', AddCarModal.creationDate)
     })
 
     it('should be forbidden for car with empty/invalid milage', () => {

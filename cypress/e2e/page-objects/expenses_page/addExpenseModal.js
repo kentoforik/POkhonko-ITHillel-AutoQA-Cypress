@@ -1,7 +1,7 @@
 import { expansesPageSelectors } from '../../selectors/expansesPage'
 const { addExpenseModal: addExpenseModalSelectors } = expansesPageSelectors
 
-class addExpenseModal {
+class AddExpenseModal {
   get header() {
     return cy.get(addExpenseModalSelectors.header)
   }
@@ -81,4 +81,4 @@ class addExpenseModal {
   }
 }
 
-export default new addExpenseModal()
+export default new AddExpenseModal()

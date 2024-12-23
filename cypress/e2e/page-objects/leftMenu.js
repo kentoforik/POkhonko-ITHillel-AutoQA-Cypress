@@ -1,10 +1,10 @@
 import { leftMenuSelectors } from '../selectors/leftMenu';
 
-class leftMenu {
+class LeftMenu {
   get garage() {
     return cy.get(leftMenuSelectors.garage)
   }
-  
+
   get expenses() {
     return cy.get(leftMenuSelectors.expenses)
   }
@@ -26,4 +26,4 @@ class leftMenu {
   }
 }
 
-export default new leftMenu();
+export default new LeftMenu();

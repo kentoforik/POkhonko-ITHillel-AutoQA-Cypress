@@ -1,6 +1,6 @@
 import { expansesPageSelectors } from '../../selectors/expansesPage'
 
-class expansesPage {
+class ExpansesPage {
   get header() {
     return cy.get(expansesPageSelectors.header)
   }
@@ -27,4 +27,4 @@ class expansesPage {
   }
 }
 
-export default new expansesPage()
+export default new ExpansesPage()
