@@ -9,7 +9,7 @@ export async function authHandler(url, username, password) {
 
 export function UserSignUpFiller(userData, selectors) {
   cy.contains('Sign up').click()
-  
+
   const {
     name,
     lastName,

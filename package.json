@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "npx cypress run",
-    "test-ui": "npx cypress open"
+    "test-ui": "npx cypress open",
+    "test:alternative": "npx cypress run --config-file cypress.config2.js",
+    "test-ui:alternative": "npx cypress open --config-file cypress.config2.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,7 @@
   "homepage": "https://github.com/kentoforik/POkhonko-ITHillel-AutoQA-Cypress#readme",
   "description": "",
   "devDependencies": {
-    "cypress": "^13.16.1"
+    "cypress": "^13.16.1",
+    "mochawesome": "^7.1.3"
   }
 }
