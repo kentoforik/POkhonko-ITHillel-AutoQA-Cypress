@@ -1,6 +1,5 @@
-import { garagePageConstants } from '../../constants/garagePage';
 import { garagePageSelectors } from '../../selectors/garagePage';
-
+import AddCarModal from './addCarModal';
 class GaragePage {
   get header() {
     return cy.get(garagePageSelectors.header)

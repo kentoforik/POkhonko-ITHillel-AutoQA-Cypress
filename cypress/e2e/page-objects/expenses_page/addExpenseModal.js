@@ -42,6 +42,10 @@ class AddExpenseModal {
     return cy.get(addExpenseModalSelectors.addBtn)
   }
 
+  get cancelBtn() {
+    return cy.get(addExpenseModalSelectors.cancelBtn)
+  }
+
   selectVehicle(vehicle) {
     this.vehicleSelector.select(vehicle)
   }
@@ -71,13 +75,27 @@ class AddExpenseModal {
   }
 
   submit() {
-    cy.get(addExpenseModalSelectors.addBtn)
-      .click()
+    cy.get(addExpenseModalSelectors.addBtn).then(el => {
+      if (el.is(':disabled')) {
+        cy.log('Submit button is disabled')
+      } else {
+        el.click()
+      }
+    })
   }
 
   cancel() {
     cy.get(addExpenseModalSelectors.cancelBtn)
       .click()
+  }
+
+  addExpenses(vehicle, date, milage, litres, costs) {
+    this.selectVehicle(vehicle)
+    this.typeDate(date)
+    this.typeMilage(milage)
+    this.typeLitres(litres)
+    this.typeTotalCost(costs)
+    this.submit()
   }
 }
 

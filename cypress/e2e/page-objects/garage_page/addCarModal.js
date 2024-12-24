@@ -27,10 +27,6 @@ class AddCarModal {
     return cy.get(garagePageSelectors.addCarModal.milageValidationError)
   }
 
-  open() {
-    GaragePage.clickAddCarBtn()
-  }
-
   selectBrand(brand) {
     this.brandInput.select(brand)
   }
@@ -45,6 +41,13 @@ class AddCarModal {
   }
   clickCancelBtn() {
     this.cancelBtn.click()
+  }
+
+  addCar(brand, model, milage) {
+    this.selectBrand(brand)
+    this.selectModel(model)
+    this.typeMilage(milage)
+    this.clickAddBtn()
   }
 }
 

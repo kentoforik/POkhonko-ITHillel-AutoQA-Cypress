@@ -23,10 +23,8 @@ describe('Garage page', () => {
       password: Cypress.env('password')
     }
     HomePage.UserSignIn(userLoginData, homePageSelectors)
-  })
 
-  after(() => {
-    //cleaning up the garage after each test
+    //cleaning up the garage before each test
     LeftMenu.garage.click()
     GaragePage.removeAllCars()
   })
@@ -39,11 +37,8 @@ describe('Garage page', () => {
 
   describe('Add car', () => {
     it('should add car to garage, showing it in the list top', () => {
-      AddCarModal.open()
-      AddCarModal.selectBrand(garagePageConstants.carBrands[1])
-      AddCarModal.selectModel(garagePageConstants.carModels.BMW[1])
-      AddCarModal.typeMilage(milage.tenMiles)
-      AddCarModal.clickAddBtn()
+      GaragePage.addCarBtn.click()
+      AddCarModal.addCar(garagePageConstants.carBrands[1], garagePageConstants.carModels.BMW[1], milage.tenMiles)
 
       GaragePage.topCarInList
         .name.should('have.text', `${garagePageConstants.carBrands[1]} ${garagePageConstants.carModels.BMW[1]}`)
@@ -54,7 +49,7 @@ describe('Garage page', () => {
     })
 
     it('should be forbidden for car with empty/invalid milage', () => {
-      AddCarModal.open()
+      GaragePage.addCarBtn.click()
       AddCarModal.selectBrand(garagePageConstants.carBrands[2])
       AddCarModal.selectModel(garagePageConstants.carModels.Ford[2])
 
