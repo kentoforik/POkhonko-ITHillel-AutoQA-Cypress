@@ -24,7 +24,7 @@ module.exports = defineConfig({
     //   openMode: 1,
     // },
     
-    specPattern: "./cypress/e2e/20*/**/*cy.js" //change this for each HW
+    specPattern: "./cypress/e2e/21*/**/*cy.js" //change this for each HW
   },
 
 });
